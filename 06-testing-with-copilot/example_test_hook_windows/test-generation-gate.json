@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "type": "command",
+        "command": "bash ./.github/hooks/test-generation-gate.sh",
+        "windows": "& ./.github/hooks/test-generation-gate.ps1",
+        "timeout": 20
+      }
+    ],
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "bash ./.github/hooks/test-generation-gate.sh",
+        "windows": "& ./.github/hooks/test-generation-gate.ps1",
+        "timeout": 20
+      }
+    ]
+  }
+}
