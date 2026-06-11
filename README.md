@@ -15,15 +15,15 @@ This course is aimed at developers who already use FastAPI regularly and want to
 
 ## Course Order
 
-1. `modes`
-2. `debugging-requests`
-3. `instructions`
-4. `skills`
-5. `hooks`
-6. `edits`
-7. `testing-with-copilot`
-8. `error-recovery`
-9. `mcps`
+1. `01-modes`
+2. `02-debugging-requests`
+3. `03-instructions`
+4. `04-skills`
+5. `05-hooks`
+6. `06-edits`
+7. `07-testing-with-copilot`
+8. `08-error-recovery`
+9. `09-mcps`
 
 ## Ask, Agent, and Plan
 
