@@ -16,13 +16,13 @@ Use hooks when:
 
 Hooks run at specific lifecycle points. In this course, the key exercise is a Ruff-based hook that runs after Copilot-driven Python changes.
 
-## Advantages
+## Cool
 
 - Hooks enforce behavior instead of only suggesting it.
 - They work well with team tooling.
 - They make the feedback loop visible.
 
-## Disadvantages
+## Not Cool
 
 - They need careful setup.
 - They can be noisy if they run too broadly.

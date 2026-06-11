@@ -12,13 +12,13 @@ Use an MCP when Copilot needs controlled access to something outside the normal 
 
 For this course, the MCP example is a local, read-only SQLite server connected to the same database used by the FastAPI application.
 
-## Advantages
+## Cool
 
 - Connects Copilot to real project data.
 - Makes tool boundaries explicit.
 - Good for controlled automation and richer context.
 
-## Disadvantages
+## Not Cool
 
 - Requires careful guardrails.
 - Tool exposure should be deliberate.

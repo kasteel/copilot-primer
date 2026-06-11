@@ -15,8 +15,8 @@ This course is aimed at developers who already use FastAPI regularly and want to
 
 ## Course Order
 
-1. `01-modes`
-2. `02-debugging-requests`
+1. `01-debugging-requests`
+2. `02-ask-agent-plan`
 3. `03-instructions`
 4. `04-skills`
 5. `05-hooks`

@@ -17,13 +17,13 @@ Use Copilot in testing when you want help with:
 
 The best workflow is not “generate tests and trust them.” It is “generate tests, inspect the assertions, run them, and tighten them.”
 
-## Advantages
+## Cool
 
 - Fast starting point for endpoint coverage.
 - Useful for enumerating edge cases.
 - Good fit for regression work after edits.
 
-## Disadvantages
+## Not Cool
 
 - Generated tests can be shallow.
 - Copilot may assert the wrong thing confidently.

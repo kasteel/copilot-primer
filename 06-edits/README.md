@@ -18,13 +18,13 @@ Use Edits when a change naturally touches:
 
 Edits coordinate changes across files so you can review them as one operation instead of a set of disconnected suggestions.
 
-## Advantages
+## Cool
 
 - Good for cross-layer refactors.
 - Fits realistic application work.
 - Encourages reviewing the whole change, not just one file.
 
-## Disadvantages
+## Not Cool
 
 - Multi-file changes can hide regressions if reviewed lazily.
 - Over-wide edits are harder to reason about.

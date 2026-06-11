@@ -18,13 +18,13 @@ Use instructions when you want Copilot to consistently respect rules such as:
 
 Instructions can apply broadly or to specific file patterns. They are added as context so Copilot can respond in a way that matches the repository conventions.
 
-## Advantages
+## Cool
 
 - Good for architectural rules and style guidance.
 - Reusable across many sessions.
 - Easy to inspect in prompt debugging.
 
-## Disadvantages
+## Not Cool
 
 - They guide behavior but do not enforce it.
 - They can become too broad if written without clear scope.

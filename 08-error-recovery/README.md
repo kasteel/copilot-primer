@@ -22,13 +22,13 @@ The fastest recovery loop is usually:
 3. redirect Copilot with the smallest useful correction
 4. rerun validation
 
-## Advantages
+## Cool
 
 - Builds confidence in working with AI output.
 - Keeps progress moving without restarting.
 - Turns failures into usable signal.
 
-## Disadvantages
+## Not Cool
 
 - Requires discipline around validation.
 - It is easy to over-correct with a broad new prompt.

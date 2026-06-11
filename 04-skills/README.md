@@ -12,13 +12,13 @@ Use a skill when you want more than a static rule. A skill is useful when Copilo
 
 A skill typically includes a `SKILL.md` description and may include examples or helper resources. The description should be specific enough that the skill activates in the intended context.
 
-## Advantages
+## Cool
 
 - Better for reusable workflows than plain instructions.
 - Can include examples and supporting material.
 - Useful when only certain kinds of work should trigger extra guidance.
 
-## Disadvantages
+## Not Cool
 
 - Activation depends on good scoping and descriptions.
 - Overly broad skills can show up in the wrong places.
