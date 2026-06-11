@@ -53,14 +53,3 @@ A bad generated test usually has one of these smells:
 
 That distinction is where senior judgment matters most.
 
-## Project-Specific Reading
-
-This repository already has a test baseline around the FastAPI app, which makes it a good place to teach test extension rather than raw test bootstrapping.
-
-That is useful because the real question becomes:
-
-- did the new test deepen coverage
-- or did it only add another passing line to the suite
-
-That is the right standard for advanced users.
-

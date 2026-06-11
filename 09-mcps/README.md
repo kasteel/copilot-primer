@@ -25,17 +25,6 @@ That means every design choice matters:
 
 The right question is not "can Copilot reach the database?" The right question is "what is the safest interface that still solves the use case?"
 
-## Project-Specific Reading
-
-This repository uses a local read-only SQLite MCP against the same bootstrapped database that powers the FastAPI application.
-
-That is a good teaching design because:
-
-- the data is real enough to be useful
-- the interface can be small and concrete
-- read-only constraints are easy to reason about
-- students can see that MCP value comes from design, not from unlimited access
-
 ## What Good MCP Design Looks Like
 
 Good MCP design is:

@@ -61,9 +61,3 @@ Examples of strong recovery framing:
 
 That kind of prompt gives the model a defect description rather than a vague dissatisfaction signal.
 
-## Project-Specific Reading
-
-This repository is a good fit for error recovery exercises because the architecture is explicit enough that learners can tell when Copilot moves logic into the wrong layer or breaks a testable contract.
-
-That clarity makes recovery teachable. Students can see what was wrong, what constraint mattered, and whether the repair respected the architecture.
-

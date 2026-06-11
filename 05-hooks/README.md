@@ -69,14 +69,3 @@ Common hook failure modes include:
 
 The teaching point is not "hooks are powerful." The teaching point is "hooks are a tradeoff between enforcement value and workflow friction."
 
-## Project-Specific Reading
-
-This repository is a good fit for a Ruff-based hook because:
-
-- the codebase is Python
-- Ruff is already part of the toolchain
-- the command is deterministic and easy to interpret
-- the feedback loop is short enough to be practical
-
-That makes it a clean example of when a hook adds real value instead of theater.
-

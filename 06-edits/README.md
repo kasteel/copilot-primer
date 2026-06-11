@@ -57,7 +57,3 @@ For example, "add one response field to `/orders/recent` and update route, servi
 
 "Refactor the order system" is not.
 
-## Project-Specific Reading
-
-This repository is intentionally structured for Edits exercises because route, service, repository, and test layers are clearly separated. That makes it easy to see whether Copilot kept the architectural chain intact.
-

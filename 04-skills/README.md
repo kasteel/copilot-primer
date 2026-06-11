@@ -88,12 +88,3 @@ You should inspect:
 
 The chapter is successful only if students stop saying "the skill seemed to help" and start saying "the skill activated for this kind of request and not for that one."
 
-## Project-Specific Reading
-
-In this repository, a strong skill boundary would be:
-
-- active for API-layer work such as routes, response models, and endpoint tests
-- inactive for repository SQL work or low-level database concerns
-
-That distinction is valuable because it teaches students that activation boundaries are part of the design.
-
