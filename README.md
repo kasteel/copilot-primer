@@ -13,6 +13,15 @@ This course is aimed at developers who already use FastAPI regularly and want to
 - `ruff` is used for linting and formatting.
 - `pytest` is used for verification.
 
+## Copilot Debug Logging
+
+The workshop includes exercises that rely on Agent Debug Logs and cached-turn inspection. The workspace therefore includes `.vscode/settings.json` with these settings enabled by default:
+
+- `github.copilot.chat.agentDebugLog.enabled`
+- `github.copilot.chat.agentDebugLog.fileLogging.enabled`
+
+If token, cache, or model-turn fields stay empty during the debugging chapter, start a fresh chat session after confirming those settings are enabled in the current window.
+
 ## Course Order
 
 1. `01-debugging-requests`

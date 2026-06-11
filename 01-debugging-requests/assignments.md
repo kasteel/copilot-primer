@@ -11,7 +11,7 @@ Tasks:
 3. Open the Chat Debug view.
 4. On paper, draw the building blocks of the request as you observe them.
 
-Your drawing should include, at minimum:
+Your drawing should include stuff like:
 
 - your typed request
 - system prompt or orchestration instructions
@@ -23,11 +23,12 @@ Your drawing should include, at minimum:
 Expected outcome:
 
 - You should end with a sketched architecture of a basic Copilot request, not just a list of labels.
-- You should be able to explain which parts came from you, which came from the editor, and which came from the Copilot orchestration layer.
 
 ## Assignment 2: Investigate Token Consumption
 
 Goal: connect prompt shape to token cost, cache behavior, and latency.
+
+Preflight: this assignment assumes Agent Debug Log capture and file logging are enabled in the current VS Code window. This repository ships those settings in `.vscode/settings.json`, but if the logs still show empty token or model-turn fields, start a fresh chat session after confirming the settings are active.
 
 Tasks:
 
@@ -39,8 +40,8 @@ Tasks:
 
 Use these concrete examples:
 
-- Small request: `Explain what the /health endpoint returns in python-app/app/main.py.`
-- Small variation: `Briefly explain what the /health endpoint returns in python-app/app/main.py.`
+- Small request: `Explain what the /health endpoint returns in python-app/app/main.py and whether returning the database path is a good idea.`
+- Small variation: `Briefly explain what the /health endpoint returns in python-app/app/main.py and whether returning the database path is a good idea.`
 - Broader request: `Review python-app/app/main.py, python-app/app/api/orders.py, python-app/app/services/order_service.py, and python-app/app/repositories/order_repository.py and propose how to extend /orders/recent with one extra response field, including what would need to change in tests.`
 - Lightly altered broader request: `Review python-app/app/main.py, python-app/app/api/orders.py, python-app/app/services/order_service.py, python-app/app/repositories/order_repository.py, and python-app/tests/test_api.py and propose how to extend /orders/recent with one extra response field, including what would need to change in tests.`
 
