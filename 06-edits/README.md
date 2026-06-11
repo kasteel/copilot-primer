@@ -1,41 +1,63 @@
 # Edits
 
-## What It Is
+## When Edits Are The Right Tool
 
-Copilot Edits are useful when one change spans multiple files and layers.
+Use Edits when the change is inherently coordinated across layers, such as:
 
-## When To Use It
+- route plus service plus repository
+- DTO plus serialization plus tests
+- naming changes that cross API and test boundaries
+- response shape changes that require one consistent contract update
 
-Use Edits when a change naturally touches:
+Do not use Edits just because a task is large. Use it when the work has a shared intent that benefits from being reviewed as one unit.
 
-- routes
-- services
-- repositories
-- models
-- tests
+## What Edits Change About The Workflow
 
-## How It Works
+Edits change the review surface.
 
-Edits coordinate changes across files so you can review them as one operation instead of a set of disconnected suggestions.
+Instead of evaluating isolated one-file suggestions, you evaluate whether the whole chain of consequences has been handled:
 
-## Cool
+- was the route updated
+- was the service mapping updated
+- was the repository query updated
+- were tests updated
+- does the new contract remain coherent end to end
 
-- Good for cross-layer refactors.
-- Fits realistic application work.
-- Encourages reviewing the whole change, not just one file.
+This is why Edits pair naturally with validation. The broader the coordinated change, the less acceptable it is to review lazily.
 
-## Not Cool
+## Why Senior Developers Should Care
 
-- Multi-file changes can hide regressions if reviewed lazily.
-- Over-wide edits are harder to reason about.
-- Validation becomes more important, not less.
+Senior developers usually do not need help typing one local patch. They need help maintaining consistency across several architectural layers without dropping one link in the chain.
 
-## Project-Specific Example
+That is exactly where Edits can be valuable.
 
-A good exercise in this repository is adding a new field to a response shape and carrying it through routes, services, repositories, DTOs, and tests.
+But the tradeoff is real: once several files move together, weak review habits become much more dangerous.
 
-## Tips
+## Failure Modes
 
-- Use Edits when the change is inherently coordinated.
-- Keep the requested change narrow enough to review.
-- Validate immediately after the edit sequence.
+The common failure modes are:
+
+- the change spreads farther than necessary
+- one architectural layer is updated but another is missed
+- the diff looks coherent at a glance but the contract is still inconsistent
+- the user reviews the changes file by file and misses the end-to-end behavior
+
+The correct response is not to avoid Edits. The correct response is to define the requested change narrowly and validate the result immediately.
+
+## Good Edit Requests
+
+Good edit requests are:
+
+- small enough to review as a unit
+- explicit about the desired contract change
+- explicit about which layers are expected to move
+- paired with a validation expectation
+
+For example, "add one response field to `/orders/recent` and update route, service, repository, and tests" is a good Edits request.
+
+"Refactor the order system" is not.
+
+## Project-Specific Reading
+
+This repository is intentionally structured for Edits exercises because route, service, repository, and test layers are clearly separated. That makes it easy to see whether Copilot kept the architectural chain intact.
+

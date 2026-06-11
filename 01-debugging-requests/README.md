@@ -150,18 +150,3 @@ Things to watch:
 The Agent Debug Logs Summary view exposes aggregate token usage and duration. The Cache Explorer helps compare consecutive model turns and identify where the request prefix diverged.
 
 This matters because a low cache hit rate can increase latency and token cost, and an overloaded context can lead to weaker or truncated responses.
-
-## Cool
-
-- You can explain Copilot behavior with evidence instead of intuition.
-- You can inspect the actual building blocks of a request.
-- You can reason about token cost, cache reuse, and context pressure.
-- You can validate hypotheses about mode differences, instruction loading, and tool availability.
-
-## Not Cool
-
-- Debug output can be noisy.
-- Logs may contain sensitive project context and should be reviewed before sharing.
-- It is easy to over-focus on raw payloads without connecting them back to task quality.
-- Some important orchestration behavior is only partly visible, so you still need to separate evidence from inference.
-

@@ -2,62 +2,53 @@
 
 ## Assignment 1: Compare The Constructed Requests
 
-Goal: investigate what actually changes between `Ask`, `Agent`, and `Plan` for the same task.
-
-Task:
-
-1. Pick one concrete task in `python-app`, such as adding a new query parameter to `/orders/recent`.
-2. Send the same task once in `Ask`, once in `Plan`, and once in `Agent`.
-3. Open the debug view for each request.
-4. Compare at least these aspects:
-	- message framing
-	- tool visibility or tool use expectations
-	- request options or metadata when visible
-	- whether the prompt is shaped toward analysis, decomposition, or execution
-
-Expected observations:
-
-- `Plan` should show stronger structuring pressure than `Ask`.
-- `Agent` should look more execution-oriented than the other two.
-- Some behavior differences may be visible in the prompt, while others may only be inferable from the orchestration behavior.
-
-## Assignment 2: Test The Context Hypothesis
-
-Goal: decide whether `Plan` helps because of mode behavior or because it gives better structure before implementation.
+Goal: inspect what actually changes between `Ask`, `Agent`, and `Plan` when the underlying task is held constant.
 
 Tasks:
 
-1. Pick a larger change, such as extending a response shape across route, service, repository, DTO, and tests.
-2. Ask for the work directly in `Agent` mode.
-3. Then repeat the experiment as `Plan` first, followed by `Agent`.
-4. Compare the resulting request traces, implementation quality, and validation story.
+1. Pick one concrete change in `python-app`, such as extending `/orders/recent` with one additional response field.
+2. Send the same core task once in `Ask`, once in `Plan`, and once in `Agent`.
+3. Open Chat Debug View for each request.
+4. Compare at least these aspects across the three requests:
+	- message framing
+	- whether the request is shaped toward explanation, decomposition, or execution
+	- visible tool declarations or action expectations
+	- any visible request options or metadata differences
+	- the final response shape that comes back to the UI
 
 Write down:
 
-- whether the plan reduced ambiguity
-- whether the implementation became narrower or safer
-- whether the later `Agent` run looked better scaffolded
+- what is directly visible in the constructed request
+- what changed in the resulting behavior even when the visible request looked similar
+- which differences you can prove and which differences you can only infer
 
-## Assignment 3: Match Mode To Failure Pattern
+Expected outcome:
 
-Goal: choose modes based on failure risk rather than habit.
+- You should end with a concrete comparison of three request shapes, not just a statement that the modes "feel different."
 
-Tasks:
+## Assignment 2: Test Whether Plan Helps Because Of Structure
 
-1. Use `Ask` to critique whether a proposed change violates the repository/service boundary.
-2. Use `Plan` to decompose a change that touches API, service, and tests.
-3. Use `Agent` to execute one reviewed change.
-4. For each mode, record what kind of mistake it is most likely to prevent and what kind of mistake it is most likely to introduce.
-
-## Assignment 4: Form And Test A Theory
-
-Goal: treat mode choice as a falsifiable engineering hypothesis.
+Goal: decide whether `Plan` improves later execution because of hidden mode behavior or because it forces better decomposition before action.
 
 Tasks:
 
-1. Write one theory about how `Plan` is enforced under the hood.
-2. Write one theory about how `Agent` differs from `Ask` at prompt or orchestration level.
-3. Use the debug tooling to gather evidence for or against both theories.
-4. Mark which parts are directly observed and which parts remain informed inference.
+1. Choose a change that touches route, service, repository, and tests.
+2. First, ask for that change directly in `Agent` mode.
+3. Then reset and repeat the experiment as `Plan` first, followed by `Agent`.
+4. Compare the plan quality, implementation quality, and validation path.
+5. Use Chat Debug View on the planning step and the execution step to see how the prompts differ.
 
-This assignment is complete only when you separate evidence from speculation.
+Use this concrete prompt for both experiments:
+
+`Extend /orders/recent so each item also returns an item_count field. Update the route, service, repository, and tests. Keep the existing architecture boundaries intact.`
+
+Write down:
+
+- whether the planning step reduced ambiguity
+- whether the later execution became narrower or safer
+- whether the plan surfaced assumptions that the direct `Agent` path skipped
+- whether the improvement came from better decomposition or from some other visible change
+
+Expected outcome:
+
+- You should be able to argue whether `Plan` helped because it changed the request shape, because it improved the human review loop, or both.

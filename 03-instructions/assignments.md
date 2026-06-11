@@ -1,37 +1,52 @@
 # Assignments
 
-## Assignment 1: Project-Wide Architecture Rules
+## Assignment 1: Write Project-Wide Architecture Instructions
 
-Goal: create instructions that reinforce the shared FastAPI architecture.
-
-Tasks:
-
-1. Add a project-wide instruction file that says routes stay thin, services own business logic, and repositories own SQL.
-2. Ask Copilot to add a new endpoint.
-3. Review whether the response respects the boundaries.
-4. Use request debugging to confirm the instruction was included.
-
-## Assignment 2: Tooling Rules
-
-Goal: encode team tooling conventions.
+Goal: create instruction content that is specific enough to shape behavior and small enough to remain debuggable.
 
 Tasks:
 
-1. Add instructions that prefer `just` for common commands, `uv` under the hood, `ruff` for lint and format, and `pytest` for tests.
-2. Ask Copilot how to validate a change in `python-app`.
-3. Check whether the suggested workflow matches the repo conventions.
+1. Add or revise a project-wide instruction file for the shared FastAPI app.
+2. Include only high-value repository rules such as:
+	- routes stay thin
+	- services own business logic
+	- repositories own SQL
+	- validation should run through repo-standard commands
+3. Ask Copilot to add or revise one endpoint in `python-app/app/api/`.
+4. Review whether the result respects the architectural boundaries.
+5. Use Chat Debug View to confirm the instruction content was included.
 
-## Assignment 3: Scoped Python Instructions
+Write down:
 
-Goal: scope instructions to the right files.
+- which rules changed the answer meaningfully
+- which rules were too vague to observe in practice
+- whether the instruction file stayed compact enough to justify its cost
+
+Expected outcome:
+
+- You should end with a small, testable instruction set rather than a long repository manifesto.
+
+## Assignment 2: Encode Tooling And Validation Conventions
+
+Goal: teach Copilot the repository workflow without turning the instruction file into generic process documentation.
 
 Tasks:
 
-1. Create a Python-scoped instruction file.
-2. Add rules about typing and small functions.
-3. Compare behavior in a Python file and a markdown file.
+1. Add instruction language that makes the preferred command surface explicit:
+	- common tasks should go through `just`
+	- Python execution should run through `uv`
+	- linting and formatting use `ruff`
+	- verification uses `pytest`
+2. Ask Copilot how to validate a change to the FastAPI app.
+3. Compare the answer before and after the tooling instructions are present.
+4. Check whether the instruction changes actual command recommendations instead of merely tone.
 
-Expected observations:
+Write down:
 
-- Scoped instructions should matter only where they apply.
-- Project-wide instructions should remain stable across the repo.
+- which workflow suggestions improved
+- whether the instruction introduced any ambiguity
+- whether the answer became more repository-specific
+
+Expected insight:
+
+- Good instructions move Copilot away from generic workflow advice and toward the actual repo contract.

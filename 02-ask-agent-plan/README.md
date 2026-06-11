@@ -1,154 +1,130 @@
 # Ask, Agent, And Plan
 
-## What It Is
+## Core Mental Model
 
-`Ask`, `Agent`, and `Plan` are not just three tones of the same interaction. They express different operating contracts between the user, the model, the editor, and the tool system.
+The useful simplification is:
 
-For an advanced user, the interesting question is not only "when should I click which mode?" but also "what changes under the hood when I do?"
+- `Ask` optimizes for explanation and bounded reasoning
+- `Plan` optimizes for decomposition, sequencing, and surfacing assumptions before execution
+- `Agent` optimizes for delegated execution across the workspace with tools, edits, and validation
 
-## Working Hypothesis
+That simplification is good enough to work with, but it is still incomplete. Each mode changes multiple things at once:
 
-The safest assumption is that mode selection changes more than presentation. In practice, the mode likely affects some combination of:
+- what the system wants the model to produce
+- how strongly tool use is encouraged or suppressed
+- whether edits are part of the expected outcome
+- how much structure the response is pushed toward
+- how the UI interprets and presents the result
 
-- the system or orchestration prompt
-- what the model is instructed to optimize for
-- whether tool use and editing are expected or suppressed
-- how much of the answer is expected to be plan-shaped versus action-shaped
-- how the UI and backend interpret the result
+Mode selection is therefore an orchestration decision. It changes the shape of the collaboration, not just the wording of the answer.
 
-You should not teach this as folklore. You should verify it through request debugging.
+## Ask
 
-## Likely Behavioral Differences
+`Ask` is usually the lowest-delegation path. It is strongest when the primary need is judgment rather than action.
 
-### Ask
+Typical signals that `Ask` is the right choice:
 
-`Ask` appears to optimize for explanation, comparison, and bounded help. The model is usually being asked to respond directly rather than to operate on the workspace autonomously.
+- you want a comparison between two designs
+- you want critique before implementation
+- you want help understanding a local code path
+- you suspect the task is under-specified and you do not want the model to operationalize assumptions yet
 
-Typical characteristics:
+What tends to be good about `Ask`:
 
-- answer-first behavior
-- narrower action expectation
-- lower need for orchestration scaffolding
-- useful when you want judgment without handing over execution
+- it keeps the conversation narrower
+- it is easier to challenge and redirect
+- it is well suited to architecture review, naming, boundary decisions, and test strategy discussion
 
-### Agent
+What tends to go wrong with `Ask`:
 
-`Agent` appears to optimize for delegated execution. The model is expected to inspect files, decide on edits, validate them, and keep moving until the task is complete.
+- it can stop one step short of useful execution
+- it can produce high-quality reasoning that never becomes code
+- users sometimes keep asking follow-up questions when the task has already crossed the line into implementation work
 
-Typical characteristics:
+The failure mode is not that `Ask` is weak. The failure mode is that the user keeps the task in analysis mode after the main uncertainty has already been removed.
 
-- stronger bias toward tool use and file changes
-- larger execution surface
-- explicit or implicit validation loop
-- better fit for multi-file implementation and repair
+## Agent
 
-### Plan
+`Agent` is the highest-delegation path in this course. It is the mode where Copilot is most likely to inspect files, call tools, change code, validate its own changes, and continue iterating.
 
-`Plan` appears to optimize for structured intent before execution. It is useful when you want Copilot to externalize sequencing, assumptions, risks, and validation before edits happen.
+Typical signals that `Agent` is the right choice:
 
-Typical characteristics:
+- the target behavior is already clear
+- the change spans multiple files or layers
+- you want the assistant to execute, not merely advise
+- there is a natural validation loop after the change
 
-- decomposition before action
-- clearer dependency ordering
-- better surfacing of assumptions and missing context
-- useful before broad or risky changes, but not because it magically increases context size
+What tends to be good about `Agent`:
 
-## Under The Hood: What To Investigate
+- it reduces the mechanical burden of multi-file work
+- it is useful for repairs, refactors, and coordinated edits
+- it can compress several boring implementation steps into one reviewed operation
 
-You should assume that some differences are visible in the debug trace and some are not.
+What tends to go wrong with `Agent`:
 
-Visible candidates:
+- it can widen scope based on a weak assumption
+- it can keep moving even when the original task definition was flawed
+- it rewards vague prompts less than users expect
 
-- the final message shape
-- tool declarations or tool availability
-- request options
-- explicit planning language added to the prompt
-- whether prior context is framed as implementation work or analysis work
+The failure mode is usually not "the model did something random." The failure mode is that the user delegated execution before the problem statement was precise enough.
 
-Less directly visible candidates:
+## Plan
 
-- backend routing logic
-- policy or orchestration layers outside the raw user-visible prompt
-- mode-specific post-processing of model output
+`Plan` is most useful when the problem is not code generation itself but uncertainty around sequencing, scope, or dependency ordering.
 
-This is why chapter 1 is request debugging. Debugging is the evidence layer for this chapter.
+Typical signals that `Plan` is the right choice:
 
-## Context Considerations
+- the task touches several layers and you want the change decomposed first
+- there are tradeoffs that should be surfaced before editing
+- you want assumptions and risks written down explicitly
+- you want a reviewable execution scaffold before granting autonomy
 
-Mode choice does not replace context discipline.
+What tends to be good about `Plan`:
 
-Important points:
+- it externalizes hidden assumptions early
+- it often narrows later implementation work
+- it gives you a concrete artifact to challenge before code changes happen
 
-- `Plan` is not automatically better because the task is large. It is better when the main problem is sequencing, ambiguity, or risk.
-- `Agent` is not automatically better because the task is executable. It is better when the surrounding context is good enough for safe autonomous work.
-- `Ask` is often better than both when the main task is architectural judgment, API design discussion, or identifying the right abstraction boundary.
+What tends to go wrong with `Plan`:
 
-For larger changes, `Plan` can be valuable because it gives the model a structured scaffold to work from later, but that benefit comes from explicit decomposition, not from a special "large task context mode."
+- it can become ceremonial for obvious tasks
+- it can produce a polished but shallow sequence if the repository context is weak
+- users sometimes treat the existence of a plan as proof that the plan is correct
 
-## Cool And Not Cool
+The failure mode is not overthinking. The failure mode is mistaking structure for truth.
 
-### Ask
+## What Probably Changes Under The Hood
 
-Cool:
+Some differences are visible. Some are only inferable.
 
-- low commitment
-- good for comparison and critique
-- easier to challenge point by point
+Things you can often investigate directly:
 
-Not cool:
+- message framing in the constructed request
+- whether the request is shaped toward reasoning, planning, or execution
+- whether tools are declared or expected differently
+- whether the response is being pushed toward a plan artifact or an action artifact
 
-- can stall if you really needed action
-- may produce good advice that never gets converted into concrete edits
+Things you may only infer indirectly:
 
-### Agent
+- backend routing
+- orchestration policies outside the visible prompt
+- mode-specific post-processing or validation behavior
 
-Cool:
+The important teaching point is not to pretend you can see everything. The important point is to separate what the debug trace proves from what your team currently believes.
 
-- strongest fit for end-to-end change execution
-- useful for validation loops and file coordination
-- efficient when the target behavior is already clear
+## Mode Choice And Context Discipline
 
-Not cool:
+Mode choice does not compensate for poor context.
 
-- can widen scope too quickly
-- can confidently operationalize a bad assumption
-- benefits most from explicit guardrails and good local context
+Important distinctions:
 
-### Plan
+- `Plan` is not better because a task is large. It is better when the task is ambiguous, risky, or structurally dependent.
+- `Agent` is not better because a task is executable. It is better when the objective is clear enough to delegate safely.
+- `Ask` is not just for beginners. It is often the best mode for senior work such as architectural critique, abstraction review, and failure analysis.
 
-Cool:
+For experienced engineers, the real question is usually: what is the dominant risk right now?
 
-- exposes assumptions early
-- useful for larger or riskier change sets
-- gives you a reviewable scaffold before code is touched
+- if the dominant risk is choosing the wrong direction, start with `Ask`
+- if the dominant risk is sequencing the work badly, start with `Plan`
+- if the dominant risk is mechanical implementation effort, start with `Agent`
 
-Not cool:
-
-- can become performative if the task is already obvious
-- may create a false sense of precision if the plan is not grounded in actual repository context
-
-## Project-Specific Examples
-
-In this repository:
-
-- use `Ask` to compare whether a new architectural rule belongs in `03-instructions` or `05-hooks`
-- use `Plan` before changing the shared FastAPI app across routes, services, repositories, and tests
-- use `Agent` when implementing that approved change across `python-app/`
-
-## What To Teach Your Students
-
-Do not teach mode selection as a soft preference. Teach it as an engineering choice about orchestration.
-
-The right questions are:
-
-- Do I need explanation, execution, or decomposition?
-- Is the main risk misunderstanding the task, or carrying out the task badly?
-- Do I need a plan because the change is large, or because the dependencies are unclear?
-- What does the debug trace show is actually different between these modes?
-
-## Tips
-
-- Start in `Ask` when you want judgment.
-- Start in `Plan` when you need structure, tradeoffs, or dependency ordering.
-- Start in `Agent` when the task is already concrete and you want execution.
-- When in doubt, compare the constructed requests for the same task across all three modes instead of arguing from intuition.

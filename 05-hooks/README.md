@@ -1,39 +1,82 @@
 # Hooks
 
-## What It Is
+## What Hooks Are Good For
 
-Hooks let you run deterministic automation around Copilot actions. They are useful when guidance is not enough and you want an actual command to run.
+Hooks are appropriate when you need the system to actually run something, not merely remember something.
 
-## When To Use It
+Good hook use cases include:
 
-Use hooks when:
+- running lint or format checks after edits
+- enforcing a validation step before accepting changes
+- blocking obviously dangerous operations
+- making a repeatable guardrail visible to the team
 
-- a lint or format step should always run
-- dangerous commands should be blocked
-- you want repeatable validation around Copilot edits
+This is the key conceptual difference from instructions and skills:
 
-## How It Works
+- instructions shape behavior
+- skills package workflows
+- hooks execute deterministic automation
 
-Hooks run at specific lifecycle points. In this course, the key exercise is a Ruff-based hook that runs after Copilot-driven Python changes.
+## Why Senior Developers Should Care
 
-## Cool
+Hooks are not just a convenience feature. They are a way to close the gap between AI-generated code and the repository's actual quality contract.
 
-- Hooks enforce behavior instead of only suggesting it.
-- They work well with team tooling.
-- They make the feedback loop visible.
+If your team says "all Python edits should pass Ruff" and nothing actually runs Ruff, that rule is aspirational.
 
-## Not Cool
+Once a hook runs the check, the workflow becomes operational rather than rhetorical.
 
-- They need careful setup.
-- They can be noisy if they run too broadly.
-- They should stay simple and predictable.
+## How To Think About Hook Design
 
-## Project-Specific Example
+Good hooks are:
 
-This repository uses hooks to demonstrate where `ruff` enforcement helps more than instructions alone.
+- narrow in scope
+- obvious in effect
+- cheap enough to run regularly
+- tied to a clear quality or safety outcome
 
-## Tips
+Bad hooks are:
 
-- Keep hook scope clear.
-- Prefer small commands with obvious outcomes.
-- Compare hook behavior with instruction behavior on the same edit.
+- too broad
+- too slow
+- too surprising
+- too complicated to debug
+
+The fastest way to make a hook unpopular is to let it fire constantly for marginal value.
+
+## Instructions Versus Hooks
+
+This is a distinction worth teaching explicitly.
+
+If the desired behavior is "please prefer Ruff," that is instruction-shaped.
+
+If the desired behavior is "run Ruff after relevant edits," that is hook-shaped.
+
+One steers. The other enforces.
+
+Teams often need both:
+
+- instructions to bias the model toward good behavior
+- hooks to catch the cases where guidance was ignored or insufficient
+
+## Failure Modes
+
+Common hook failure modes include:
+
+- triggering too often
+- running an expensive command for a tiny change
+- producing noisy output with little actionability
+- making the workflow feel hostile rather than informative
+
+The teaching point is not "hooks are powerful." The teaching point is "hooks are a tradeoff between enforcement value and workflow friction."
+
+## Project-Specific Reading
+
+This repository is a good fit for a Ruff-based hook because:
+
+- the codebase is Python
+- Ruff is already part of the toolchain
+- the command is deterministic and easy to interpret
+- the feedback loop is short enough to be practical
+
+That makes it a clean example of when a hook adds real value instead of theater.
+

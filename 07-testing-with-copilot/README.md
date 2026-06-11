@@ -1,40 +1,66 @@
 # Testing With Copilot
 
-## What It Is
+## What Copilot Is Good At In Testing
 
-Copilot can help generate, extend, and repair tests, but it should not replace test judgment.
+Copilot is often useful for:
 
-## When To Use It
+- creating a first draft of test structure
+- suggesting additional endpoint cases
+- enumerating edge conditions
+- expanding regression coverage after a known code change
+- filling in repetitive scaffolding around `pytest` and `TestClient`
 
-Use Copilot in testing when you want help with:
+Those are real advantages. They reduce typing and help surface scenarios humans might initially forget.
 
-- pytest structure
-- FastAPI `TestClient` cases
-- edge-case discovery
-- missing assertions
+## What Copilot Is Bad At In Testing
 
-## How It Works
+Copilot is often weak at:
 
-The best workflow is not “generate tests and trust them.” It is “generate tests, inspect the assertions, run them, and tighten them.”
+- choosing the most important assertion
+- identifying whether a test is actually meaningful
+- distinguishing signal from superficial coverage
+- understanding when the real invariant is architectural rather than just syntactic
 
-## Cool
+The common failure mode is a test that technically runs but does not protect the real contract of the system.
 
-- Fast starting point for endpoint coverage.
-- Useful for enumerating edge cases.
-- Good fit for regression work after edits.
+## The Correct Testing Workflow
 
-## Not Cool
+The workflow to teach is not "generate tests." It is:
 
-- Generated tests can be shallow.
-- Copilot may assert the wrong thing confidently.
-- Coverage does not guarantee quality.
+1. define the behavior or regression that matters
+2. ask Copilot for targeted test help
+3. inspect every assertion for quality
+4. run the tests
+5. tighten or discard weak cases
 
-## Project-Specific Example
+This sequence matters because Copilot is strongest as a test assistant, not as a test authority.
 
-The shared FastAPI app already includes `pytest` tests. This chapter uses those tests as the baseline for adding new endpoints or expanding existing cases.
+## What Makes A Good Copilot-Generated Test
 
-## Tips
+A good generated test should do at least one of these well:
 
-- Ask Copilot for specific assertions, not generic coverage.
-- Prefer concrete edge cases over vague “more tests.”
-- Run tests after every meaningful change.
+- protect a real behavior contract
+- catch a plausible regression
+- make an edge case explicit
+- increase confidence in a recent change
+
+A bad generated test usually has one of these smells:
+
+- it restates implementation details without testing behavior
+- it asserts something trivial or already guaranteed elsewhere
+- it duplicates another test with slightly different wording
+- it is broad and noisy but not precise
+
+That distinction is where senior judgment matters most.
+
+## Project-Specific Reading
+
+This repository already has a test baseline around the FastAPI app, which makes it a good place to teach test extension rather than raw test bootstrapping.
+
+That is useful because the real question becomes:
+
+- did the new test deepen coverage
+- or did it only add another passing line to the suite
+
+That is the right standard for advanced users.
+
