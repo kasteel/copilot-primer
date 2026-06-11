@@ -61,6 +61,24 @@ Planned commands:
 
 The `Justfile` is written for Linux shell execution. If you are working on Windows, run it through WSL after installing `just` in that environment.
 
+## Running The App
+
+Use the shared application in `python-app/` as the target for the course exercises.
+
+Suggested flow:
+
+1. Run `just setup` to install dependencies.
+2. Run `just bootstrap` to create and seed the SQLite database.
+3. Run `just run` to start the FastAPI server.
+
+The running server is useful mainly as an API target. If you open the bare localhost URL in a browser, you should not expect a full user interface.
+
+Use these endpoints instead:
+
+- `/docs` for the Swagger UI
+- `/openapi.json` for the generated OpenAPI schema
+- `/health` for a quick health check
+
 ## Chapter Structure
 
 Each chapter should contain:
