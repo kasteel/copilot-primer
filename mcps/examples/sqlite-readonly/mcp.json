@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "primer-sqlite-readonly": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["server.py"],
+      "env": {
+        "SQLITE_DB_PATH": "${workspaceFolder}/python-app/data/app.db",
+        "SQLITE_READ_ONLY": "true",
+        "SQLITE_MAX_ROWS": "100"
+      }
+    }
+  }
+}

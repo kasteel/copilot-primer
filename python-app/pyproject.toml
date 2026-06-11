@@ -1,0 +1,20 @@
+[project]
+name = "copilot-primer-app"
+version = "0.1.0"
+description = "Shared FastAPI app used by the Copilot primer course"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "uvicorn>=0.30,<1.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.27,<1",
+    "pytest>=8.2,<9",
+    "ruff>=0.5,<1",
+]
+
+[tool.uv]
+package = false

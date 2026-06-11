@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.python-version
+*.pyc
+python-app/data/app.db

@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "windows": "Set-Location python-app; uv run ruff check app tests scripts",
+        "timeout": 20
+      }
+    ]
+  }
+}
