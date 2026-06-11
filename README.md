@@ -29,10 +29,9 @@ If token, cache, or model-turn fields stay empty during the debugging chapter, s
 3. `03-instructions`
 4. `04-skills`
 5. `05-hooks`
-6. `06-edits`
-7. `07-testing-with-copilot`
-8. `08-error-recovery`
-9. `09-mcps`
+6. `06-testing-with-copilot`
+7. `07-error-recovery`
+8. `08-mcps`
 
 ## Ask, Agent, and Plan
 
