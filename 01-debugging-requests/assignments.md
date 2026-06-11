@@ -51,7 +51,7 @@ For the broader pair, explicitly check whether cache reuse drops or breaks after
 
 Write down:
 
-- what increased token usage
+- did token usage increase with the bigger request? Why?
 - whether cache reuse improved or degraded
 - whether the broader request was actually worth the added cost
 
