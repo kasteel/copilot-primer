@@ -59,7 +59,7 @@ Planned commands:
 - `just format`
 - `just test`
 
-`just` is not installed on this machine right now, so the `Justfile` can be authored but not executed locally during this implementation pass.
+The `Justfile` is written for Linux shell execution. If you are working on Windows, run it through WSL after installing `just` in that environment.
 
 ## Chapter Structure
 

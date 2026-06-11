@@ -1,24 +1,24 @@
-set shell := ["powershell.exe", "-NoLogo", "-Command"]
+set shell := ["sh", "-cu"]
 
 app_dir := "python-app"
 
 setup:
-    Set-Location {{app_dir}}; uv sync
+    cd {{app_dir}} && uv sync --group dev
 
 bootstrap:
-    Set-Location {{app_dir}}; uv run python scripts/bootstrap_db.py
+    cd {{app_dir}} && uv run python scripts/bootstrap_db.py
 
 run:
-    Set-Location {{app_dir}}; uv run uvicorn app.main:app --reload
+    cd {{app_dir}} && uv run uvicorn app.main:app --reload
 
 lint:
-    Set-Location {{app_dir}}; uv run ruff check .
+    cd {{app_dir}} && uv run ruff check .
 
 format:
-    Set-Location {{app_dir}}; uv run ruff format .
+    cd {{app_dir}} && uv run ruff format .
 
 test:
-    Set-Location {{app_dir}}; uv run pytest
+    cd {{app_dir}} && uv run pytest
 
 check:
-    Set-Location {{app_dir}}; uv run ruff check .; uv run pytest
+    cd {{app_dir}} && uv run ruff check . && uv run pytest
