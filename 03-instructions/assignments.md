@@ -1,52 +1,45 @@
 # Assignments
 
-## Assignment 1: Write Project-Wide Architecture Instructions
+## Assignment 1: Observe Scoped Instructions In Context
 
-Goal: create instruction content that is specific enough to shape behavior and small enough to remain debuggable.
+Goal: see how scoped instructions enter the request only when the active file matches their `applyTo` pattern.
 
 Tasks:
 
-1. Add or revise a project-wide instruction file for the shared FastAPI app.
-2. Include only high-value repository rules such as:
-	- routes stay thin
-	- services own business logic
-	- repositories own SQL
-	- validation should run through repo-standard commands
-3. Ask Copilot to add or revise one endpoint in `python-app/app/api/`.
-4. Review whether the result respects the architectural boundaries.
-5. Use Chat Debug View to confirm the instruction content was included.
+1. Prompt Copilot for help with general Python application code in `python-app/app/`, such as revising a service or repository function.
+2. Prompt Copilot for help with Python tests in `python-app/tests/`, such as adding or revising a test.
+3. Compare the two requests in Chat Debug View.
+4. Check which instruction files were included for the app-code prompt and which were included for the test prompt.
+5. Note whether the scoped test instructions changed the answer in a way you could actually observe.
 
 Write down:
 
-- which rules changed the answer meaningfully
-- which rules were too vague to observe in practice
-- whether the instruction file stayed compact enough to justify its cost
+- which instructions appeared only for the test prompt
+- whether any instructions were broader than they needed to be
+- whether the scoped file was specific enough to produce an observable difference
 
 Expected outcome:
 
-- You should end with a small, testable instruction set rather than a long repository manifesto.
+- You should see that scoped instructions are part of request context, not universal policy, and that `applyTo` determines when they show up.
 
-## Assignment 2: Encode Tooling And Validation Conventions
+## Assignment 2: Change An Instruction And Compare The Result
 
-Goal: teach Copilot the repository workflow without turning the instruction file into generic process documentation.
+Goal: observe how even a small instruction edit can change a repeated prompt when the file scope matches.
 
 Tasks:
 
-1. Add instruction language that makes the preferred command surface explicit:
-	- common tasks should go through `just`
-	- Python execution should run through `uv`
-	- linting and formatting use `ruff`
-	- verification uses `pytest`
-2. Ask Copilot how to validate a change to the FastAPI app.
-3. Compare the answer before and after the tooling instructions are present.
-4. Check whether the instruction changes actual command recommendations instead of merely tone.
+1. Choose a prompt about Python tests in `python-app/tests/` and run it once with the current scoped instruction file.
+2. Edit [examples/python.test.instructions.md](c:\Users\AL31909\wrepos\copilot-primer\03-instructions\examples\python.test.instructions.md) and add a deliberately noticeable rule such as: `Variable names should refer to animals as much as possible.`
+3. Run the same prompt again against a matching test file.
+4. Compare the two answers and inspect Chat Debug View to confirm that the changed instruction content was included.
+5. Remove the funny rule when you are done so the example file returns to a sensible state.
 
 Write down:
 
-- which workflow suggestions improved
-- whether the instruction introduced any ambiguity
-- whether the answer became more repository-specific
+- what changed between the first and second answer
+- whether the instruction change affected behavior, wording, or both
+- how easy it was to verify that the difference came from the scoped instruction file
 
 Expected insight:
 
-- Good instructions move Copilot away from generic workflow advice and toward the actual repo contract.
+- Instructions are inspectable inputs. If you change them and rerun the same prompt in a matching scope, you should be able to observe the effect.
