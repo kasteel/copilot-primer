@@ -29,7 +29,7 @@ Goal: observe how even a small instruction edit can change a repeated prompt whe
 Tasks:
 
 1. Choose a prompt about Python tests in `python-app/tests/` and run it once with the current scoped instruction file.
-2. Edit [examples/python.test.instructions.md](c:\Users\AL31909\wrepos\copilot-primer\03-instructions\examples\python.test.instructions.md) and add a deliberately noticeable rule such as: `Variable names should refer to animals as much as possible.`
+2. Edit [examples/python.test.instructions.md](examples/python.test.instructions.md) and add a deliberately noticeable rule such as: `Variable names should refer to animals as much as possible.`
 3. Run the same prompt again against a matching test file.
 4. Compare the two answers and inspect Chat Debug View to confirm that the changed instruction content was included.
 5. Remove the funny rule when you are done so the example file returns to a sensible state.

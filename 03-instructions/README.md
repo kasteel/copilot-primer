@@ -60,8 +60,8 @@ Scoped instructions are just instruction files with a scope declaration so Copil
 
 In this chapter's examples, the split looks like this:
 
-- [examples/copilot-instructions.md](c:\Users\AL31909\wrepos\copilot-primer\03-instructions\examples\copilot-instructions.md) holds repository-wide guidance for the FastAPI app.
-- [examples/python.test.instructions.md](c:\Users\AL31909\wrepos\copilot-primer\03-instructions\examples\python.test.instructions.md) holds test-specific Python guidance that should only apply to matching test files.
+- [examples/copilot-instructions.md](examples/copilot-instructions.md) holds repository-wide guidance for the FastAPI app.
+- [examples/python.test.instructions.md](examples/python.test.instructions.md) holds test-specific Python guidance that should only apply to matching test files.
 
 The scoped example uses frontmatter like this:
 
@@ -79,7 +79,7 @@ To create a scoped instruction file:
 2. Add frontmatter with an `applyTo` glob that matches only the files that should receive the guidance.
 3. Keep the body narrow and behavioral, such as language conventions, layering rules, or validation commands for that slice.
 
-For example, [examples/python.test.instructions.md](c:\Users\AL31909\wrepos\copilot-primer\03-instructions\examples\python.test.instructions.md) is now intentionally scoped just to tests. Its guidance is useful there, but would be noisy or misplaced in general application code:
+For example, [examples/python.test.instructions.md](examples/python.test.instructions.md) is now intentionally scoped just to tests. Its guidance is useful there, but would be noisy or misplaced in general application code:
 
 - keep tests focused on one behavior at a time
 - prefer clear setup and explicit assertions
