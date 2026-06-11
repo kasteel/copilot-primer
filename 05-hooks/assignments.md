@@ -6,7 +6,7 @@ Goal: convert a repo preference into an actual post-edit guardrail.
 
 Tasks:
 
-1. Configure a hook that runs a Ruff command in `python-app` after relevant Copilot-driven Python changes.
+1. Configure a hook that runs a Ruff command in `python-app` after relevant Copilot-driven Python changes. See the example for inspiration. Move it to a correct location and check that it works.
 2. Keep the command narrow enough to be practical for repeated use.
 3. Ask Copilot to revise an API or service file.
 4. Observe what the hook runs and what feedback it produces.
@@ -29,7 +29,7 @@ Goal: separate guidance from enforcement using the same repository convention.
 Tasks:
 
 1. Add an instruction that prefers clean Ruff-compliant code.
-2. Make or request a change that could violate style.
+2. Make or request a change that could violate style, make sure there is no ruff-hook present.
 3. Observe what happens with instruction-only guidance.
 4. Repeat the same style of change with the hook enabled.
 5. Compare the outcomes.
