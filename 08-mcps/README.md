@@ -1,5 +1,9 @@
 # MCPs
 
+**Builds on:** nothing strictly required, but most useful after chapters 05 (hooks) and 07 (recovery), because MCP design is a guardrails discipline.
+
+> **Supply-chain warning.** An MCP server is a long-lived local process that Copilot spawns. Configuring an MCP from an untrusted `mcp.json` is equivalent to running an arbitrary binary on your machine. Always read both the `mcp.json` entry and the server source before adding it to your `.vscode/mcp.json`.
+
 ## What An MCP Is Good For
 
 Model Context Protocol is useful when Copilot needs controlled access to something outside the default workspace context, such as:

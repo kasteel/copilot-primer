@@ -1,5 +1,7 @@
 # Assignments
 
+> **Working in pairs.** Each assignment is designed for a pair. You do not need to write down every observation. Discuss with your partner and capture **2–3 take-aways** per assignment that you would share with the rest of the team.
+
 ## Assignment 1: Draw The Request
 
 Goal: build a concrete mental model of what a basic Copilot code request is made of.
@@ -11,7 +13,7 @@ Tasks:
 3. Open the Chat Debug view.
 4. On paper, draw the building blocks of the request as you observe them.
 
-Your drawing should include stuff like:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - your typed request
 - system prompt or orchestration instructions
@@ -28,7 +30,7 @@ Expected outcome:
 
 Goal: connect prompt shape to token cost, cache behavior, and latency.
 
-Preflight: this assignment assumes Agent Debug Log capture and file logging are enabled in the current VS Code window. This repository ships those settings in `.vscode/settings.json`, but if the logs still show empty token or model-turn fields, start a fresh chat session after confirming the settings are active.
+Preflight: this assignment assumes Agent Debug Log capture and file logging are enabled in the current VS Code window. The repo does **not** ship a `.vscode/settings.json` (see [README.md](../README.md#copilot-debug-logging) for the snippet to paste). If the logs still show empty token or model-turn fields, start a fresh chat session after confirming the settings are active.
 
 Tasks:
 
@@ -49,7 +51,7 @@ For the small pair, explicitly check whether prompt caching is reused.
 
 For the broader pair, explicitly check whether cache reuse drops or breaks after the altered request.
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - did token usage increase with the bigger request? Why?
 - whether cache reuse improved or degraded

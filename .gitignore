@@ -5,3 +5,11 @@ __pycache__/
 .python-version
 *.pyc
 python-app/data/app.db
+
+# Local Copilot / agent customization — do not push (see PARTICIPANTS.md).
+# A remote ruleset blocks these paths and every blocked push triggers alerting.
+.vscode/
+.github/hooks/
+.github/skills/
+.claude/
+.agents/

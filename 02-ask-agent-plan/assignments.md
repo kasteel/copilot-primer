@@ -1,5 +1,7 @@
 # Assignments
 
+> **Working in pairs.** Each assignment is designed for a pair. You do not need to write down every observation. Discuss with your partner and capture **2–3 take-aways** per assignment that you would share with the rest of the team.
+
 ## Assignment 1: Compare The Constructed Requests
 
 Goal: inspect what actually changes between `Ask`, `Agent`, and `Plan` when the underlying task is held constant.
@@ -16,7 +18,7 @@ Tasks:
 	- any visible request options or metadata differences
 	- the final response shape that comes back to the UI
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - what is directly visible in the constructed request
 - what changed in the resulting behavior even when the visible request looked similar
@@ -42,7 +44,7 @@ Use this concrete prompt for both experiments:
 
 `Extend /orders/recent so each item also returns an item_count field. Update the route, service, repository, and tests. Keep the existing architecture boundaries intact.`
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - whether the planning step reduced ambiguity
 - whether the later execution became narrower or safer

@@ -1,5 +1,20 @@
 # Skills
 
+**Builds on:** chapter 03 (skills vs instructions: rich workflows vs persistent rules).
+
+## Where Skill Directories Must Live
+
+For Copilot to discover a skill in-IDE, the skill directory must sit in one of these locations (per the [VS Code Agent Skills docs](https://code.visualstudio.com/docs/agent-customization/agent-skills)):
+
+- **Project skills:** `.github/skills/<name>/SKILL.md`, `.claude/skills/<name>/SKILL.md`, or `.agents/skills/<name>/SKILL.md`
+- **Personal skills:** `~/.copilot/skills/<name>/SKILL.md`, `~/.claude/skills/<name>/SKILL.md`, or `~/.agents/skills/<name>/SKILL.md`
+
+The parent directory name **must match** the `name` field in the SKILL.md frontmatter, otherwise the skill silently fails to load.
+
+The example in [examples/api-endpoint-skill/](examples/api-endpoint-skill) is a **template**. Copy the whole directory into `.github/skills/api-endpoint-skill/` before running the assignments.
+
+> **Supply-chain warning.** A skill can carry scripts and tell Copilot to run them. Treat skills from any source you did not write as untrusted code: read the SKILL.md *and* every file it references before placing the directory in `.github/skills/`.
+
 ## What Skills Are Good For
 
 Skills are useful when the assistant should recognize a particular kind of work and bring in richer, task-shaped guidance only when it is relevant.

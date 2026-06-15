@@ -1,5 +1,7 @@
 # Ask, Agent, And Plan
 
+**Builds on:** chapter 01 (you will compare modes in the Chat Debug view).
+
 ## Core Mental Model
 
 The useful simplification is:

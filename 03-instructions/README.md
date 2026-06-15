@@ -1,5 +1,16 @@
 # Instructions
 
+**Builds on:** chapter 01 (you will verify instruction inclusion in the Chat Debug view).
+
+## Where Instruction Files Must Live
+
+For Copilot to actually pick instructions up in-IDE, the file must be in a location it discovers:
+
+- **Repo-wide:** `.github/copilot-instructions.md`
+- **Scoped (`applyTo` glob):** any `*.instructions.md` file under `.github/instructions/`
+
+The example files in [examples/](examples) are **templates**. They are not in `.github/` and will not load on their own. Copy them to the locations above (or create symlinks) before running the assignments.
+
 ## What Instructions Are Good For
 
 Instructions are persistent markdown guidance that Copilot can include when constructing requests. They are best used for stable repository rules that you want applied repeatedly.
