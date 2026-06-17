@@ -18,3 +18,10 @@ dev = [
 
 [tool.uv]
 package = false
+
+# Route all installs through the Alliander JFrog Artifactory mirror by default.
+# See docs/registry.md for authentication and verification steps.
+[[tool.uv.index]]
+name = "allianderartifactory"
+url = "https://alliander.jfrog.io/artifactory/api/pypi/pypi-all/simple/"
+default = true

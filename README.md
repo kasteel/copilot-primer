@@ -68,7 +68,7 @@ Hooks, MCP servers, and skills all give a repository the ability to **execute or
 
 - Never enable a hook config, MCP server, or skill from a repo you did not write or audit.
 - Read any `.github/hooks/`, `.github/skills/`, `.vscode/mcp.json`, `.claude/settings.json`, or `.agents/` content in a freshly cloned repo before letting Copilot touch the workspace.
-- For dependency installs, use the internal package mirror (see [docs/registry.md](docs/registry.md)). Always install with `uv sync --frozen`; never with `--upgrade` on a managed device.
+- For dependency installs, use the internal package mirror. All `uv` installs are routed through Alliander JFrog Artifactory by default (configured in `python-app/pyproject.toml`); authenticate first as described in [docs/registry.md](docs/registry.md). Always install with `uv sync --frozen`; never with `--upgrade` on a managed device.
 
 ## Shared App
 
@@ -96,9 +96,10 @@ Use the shared application in `python-app/` as the target for the course exercis
 
 Suggested flow:
 
-1. Run `just setup` to install dependencies.
-2. Run `just bootstrap` to create and seed the SQLite database.
-3. Run `just run` to start the FastAPI server.
+1. Authenticate to Artifactory (see [docs/registry.md](docs/registry.md)) — all dependencies install through the internal mirror, not public PyPI.
+2. Run `just setup` to install dependencies.
+3. Run `just bootstrap` to create and seed the SQLite database.
+4. Run `just run` to start the FastAPI server.
 
 The running server is useful mainly as an API target. If you open the bare localhost URL in a browser, you should not expect a full user interface.
 
