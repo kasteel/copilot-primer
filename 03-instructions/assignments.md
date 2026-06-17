@@ -1,5 +1,7 @@
 # Assignments
 
+> **Working in pairs.** Each assignment is designed for a pair. You do not need to write down every observation. Discuss with your partner and capture **2–3 take-aways** per assignment that you would share with the rest of the team.
+
 ## Assignment 1: Observe Scoped Instructions In Context
 
 Goal: see how scoped instructions enter the request only when the active file matches their `applyTo` pattern.
@@ -12,7 +14,7 @@ Tasks:
 4. Check which instruction files were included for the app-code prompt and which were included for the test prompt.
 5. Note whether the scoped test instructions changed the answer in a way you could actually observe.
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - which instructions appeared only for the test prompt
 - whether any instructions were broader than they needed to be
@@ -32,9 +34,9 @@ Tasks:
 2. Edit [examples/python.test.instructions.md](examples/python.test.instructions.md) and add a deliberately noticeable rule such as: `Variable names should refer to animals as much as possible.`
 3. Run the same prompt again against a matching test file.
 4. Compare the two answers and inspect Chat Debug View to confirm that the changed instruction content was included.
-5. Remove the funny rule when you are done so the example file returns to a sensible state.
+5. Remove the funny rule when you are done so the example file returns to a sensible state. Run `git diff examples/python.test.instructions.md` to confirm the file is back to its original state.
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - what changed between the first and second answer
 - whether the instruction change affected behavior, wording, or both

@@ -1,5 +1,7 @@
 # Assignments
 
+> **Working in pairs.** Each assignment is designed for a pair. You do not need to write down every observation. Discuss with your partner and capture **2–3 take-aways** per assignment that you would share with the rest of the team.
+
 ## Assignment 1: Extend Endpoint Tests After A Real Change
 
 Goal: use Copilot to expand tests in a way that protects an actual contract change rather than just increasing line count.
@@ -27,7 +29,7 @@ Use a concrete prompt such as:
 
 `I changed the /orders/recent response. Update python-app/tests/test_api.py so the tests verify the new behavior clearly and avoid shallow assertions.`
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - whether the test suggestions became more behavior-focused
 - whether the instruction or skill changed the assertions meaningfully
@@ -35,7 +37,7 @@ Write down:
 
 ### Experiment B: Add A Human Gate Before Test Generation
 
-Study the Windows example in [example_test_hook_windows/test-generation-gate.json](example_test_hook_windows/test-generation-gate.json), [example_test_hook_windows/test-generation-gate.ps1](example_test_hook_windows/test-generation-gate.ps1), and the paired instruction in [instructions/test-confirmation.instructions.md](instructions/test-confirmation.instructions.md).
+The full gate — instruction file, hook config, and cross-platform Python gate script — is documented as paste-ready snippets in the [chapter README](README.md#the-test-generation-gate-snippet). It is a single Python file that runs on both POSIX and Windows; there is no platform-specific shell version.
 
 The important mechanism is:
 
@@ -49,15 +51,14 @@ This works because the instruction shapes the conversation, while the hook enfor
 - the instruction alone can be ignored or bypassed
 - the hook alone can block edits, but it does not explain the intended workflow nearly as well
 
-Your task is to create the Linux equivalent of that workflow and test whether it feels smooth in practice.
+Your task is to install the gate and decide whether it feels smooth in practice.
 
 Suggested scope:
 
-1. Reuse the same instruction pattern with `PROCEED`, `MODIFY`, and `SKIP`.
-2. Use the Windows example as the reference design.
-3. Implement the Linux shell version of the hook and wire it into the hook config.
-4. Try the full flow on a test-generation request against `python-app/tests/test_api.py`.
-5. Decide whether the gate improves the workflow or adds too much friction.
+1. Paste the snippets into `.github/instructions/test-confirmation.instructions.md`, `.github/hooks/test-generation-gate.json`, and `.github/hooks/test_generation_gate.py`.
+2. Try the full flow on a test-generation request against `python-app/tests/test_api.py`.
+3. Try a bypass: ask Copilot to write a test without first saying `PROCEED`. Confirm the gate denies the edit.
+4. Decide whether the gate improves the workflow or adds too much friction.
 
 Use prompts like these to test the flow:
 
@@ -68,14 +69,13 @@ Use prompts like these to test the flow:
 
 This is a useful exercise because it shows the real boundary between instructions and hooks. The instruction defines the conversation contract. The hook enforces the editing contract.
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - which assertion best protects the change you made
 - which proposed assertions were weak or redundant
 - whether Copilot improved your test design or only your speed
 - whether instructions or skills improved the generated tests
 - whether the hook gate improved your decision-making or only added friction
-- whether the Linux version feels as usable as the Windows example
 
 Expected outcome:
 

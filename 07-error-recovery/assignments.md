@@ -1,5 +1,7 @@
 # Assignments
 
+> **Working in pairs.** Each assignment is designed for a pair. You do not need to write down every observation. Discuss with your partner and capture **2–3 take-aways** per assignment that you would share with the rest of the team.
+
 ## Assignment 1: Recover From A Broken Query Limit
 
 Goal: repair a small behavioral defect without restarting the entire task.
@@ -19,7 +21,7 @@ Tasks:
 4. Re-run the same validation after the repair.
 5. Record whether the first repair was narrow or whether it widened the change unnecessarily.
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - what defect you described to Copilot
 - what constraint had to remain true

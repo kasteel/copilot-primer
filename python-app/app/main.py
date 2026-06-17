@@ -11,7 +11,7 @@ def create_app() -> FastAPI:
 
     @app.get("/health", tags=["system"])
     def health() -> dict[str, str]:
-        return {"status": "ok", "database": str(resolve_db_path())}
+        return {"status": "ok", "database": "configured" if resolve_db_path() else "missing"}
 
     app.include_router(customers_router)
     app.include_router(orders_router)

@@ -1,5 +1,7 @@
 # Error Recovery
 
+**Builds on:** chapters 02 (mode choice) and 03 (boundary instructions that the recovery prompts reference).
+
 ## What Error Recovery Really Is
 
 Error recovery is the practice of steering Copilot back onto the correct path after a local failure, such as:

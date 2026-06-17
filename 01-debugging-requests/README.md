@@ -1,5 +1,7 @@
 # Debugging Requests
 
+**Builds on:** nothing — this is the foundation for every later chapter.
+
 ## What It Is
 
 VS Code provides two complementary debugging surfaces for Copilot interactions:
@@ -93,9 +95,9 @@ Or:
 1. Open the Command Palette.
 2. Run `Developer: Show Chat Debug View`.
 
-Official screenshot from the VS Code docs:
+Official screenshot from the VS Code docs (bundled locally):
 
-![Official VS Code Chat Debug view screenshot](https://code.visualstudio.com/assets/docs/agents/chat-debug-view/chat-debug-view.png)
+![Official VS Code Chat Debug view screenshot](images/chat-debug-view.png)
 
 ### Agent Debug Logs
 
@@ -108,9 +110,9 @@ For session-level investigation, open the Agent Debug Logs panel:
 
 You can also run `Developer: Open Agent Debug Logs` from the Command Palette.
 
-Official screenshot from the VS Code docs:
+Official screenshot from the VS Code docs (bundled locally):
 
-![Official VS Code Agent Debug Logs summary screenshot](https://code.visualstudio.com/assets/docs/agents/chat-debug-view/agent-logs-summary-v3.png)
+![Official VS Code Agent Debug Logs summary screenshot](images/agent-logs-summary.png)
 
 ## What To Read In The Debug Output
 

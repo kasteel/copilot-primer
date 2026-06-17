@@ -1,5 +1,7 @@
 # Assignments
 
+> **Working in pairs.** Each assignment is designed for a pair. You do not need to write down every observation. Discuss with your partner and capture **2–3 take-aways** per assignment that you would share with the rest of the team.
+
 ## Assignment 1: Draw The Request
 
 Goal: build a concrete mental model of what a basic Copilot code request is made of.
@@ -11,7 +13,7 @@ Tasks:
 3. Open the Chat Debug view.
 4. On paper, draw the building blocks of the request as you observe them.
 
-Your drawing should include stuff like:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - your typed request
 - system prompt or orchestration instructions
@@ -28,11 +30,9 @@ Expected outcome:
 
 Goal: connect prompt shape to token cost, cache behavior, and latency.
 
-Preflight: this assignment assumes Agent Debug Log capture and file logging are enabled in the current VS Code window. This repository ships those settings in `.vscode/settings.json`, but if the logs still show empty token or model-turn fields, start a fresh chat session after confirming the settings are active.
-
 Tasks:
 
-1. Open the Agent Debug Logs panel for an active session.
+1. In a repo of your choice, open the Agent Debug Logs panel for an active session (in the chat panel click `...` and "Show Agent Debug Logs" you will be prompted to change the vscode settings to show the log).
 2. Send a small request, then repeat it with a small variation.
 3. Send a broader request, then repeat it with a light alteration.
 4. Inspect token usage, duration, and cache information for both pairs.
@@ -45,11 +45,11 @@ Use these concrete examples:
 - Broader request: `Review python-app/app/main.py, python-app/app/api/orders.py, python-app/app/services/order_service.py, and python-app/app/repositories/order_repository.py and propose how to extend /orders/recent with one extra response field, including what would need to change in tests.`
 - Lightly altered broader request: `Review python-app/app/main.py, python-app/app/api/orders.py, python-app/app/services/order_service.py, python-app/app/repositories/order_repository.py, and python-app/tests/test_api.py and propose how to extend /orders/recent with one extra response field, including what would need to change in tests.`
 
-For the small pair, explicitly check whether prompt caching is reused.
+For the small request, explicitly check whether prompt caching is reused.
 
-For the broader pair, explicitly check whether cache reuse drops or breaks after the altered request.
+For the broader request, explicitly check whether cache reuse drops or breaks after the altered request.
 
-Write down:
+Discuss with your pair and capture **2–3 take-aways**. Useful prompts:
 
 - did token usage increase with the bigger request? Why?
 - whether cache reuse improved or degraded
