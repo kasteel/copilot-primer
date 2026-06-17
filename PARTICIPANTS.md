@@ -38,7 +38,7 @@ Before starting chapter 01, run:
 just doctor
 ```
 
-This verifies `uv`, `just`, `python3`, the VS Code CLI, and the Copilot extension. Fix anything reported as MISSING before you start.
+This verifies `uv`, `just`, `python3`, and the VS Code CLI. Fix anything reported as MISSING before you start.
 
 ## Authenticate to Artifactory (before installing)
 

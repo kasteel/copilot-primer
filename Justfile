@@ -29,8 +29,4 @@ doctor:
     @command -v just    >/dev/null 2>&1 && echo "just:    $(just --version)"    || echo "just:    MISSING"
     @command -v python3 >/dev/null 2>&1 && echo "python3: $(python3 --version)" || echo "python3: MISSING"
     @command -v code    >/dev/null 2>&1 && echo "code:    $(code --version | head -n1)" || echo "code:    MISSING (VS Code CLI not on PATH)"
-    @if command -v code >/dev/null 2>&1; then \
-        ext_version=$(code --list-extensions --show-versions 2>/dev/null | grep -i '^github.copilot-chat@' | head -n1); \
-        if [ -n "$ext_version" ]; then echo "copilot: $ext_version"; else echo "copilot: extension not installed"; fi; \
-    fi
     @test -f {{app_dir}}/uv.lock && echo "uv.lock: present" || echo "uv.lock: MISSING (run 'cd {{app_dir}} && uv lock')"

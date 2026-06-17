@@ -80,7 +80,7 @@ The repository exposes common tasks through `just`. The recipes wrap the underly
 
 Commands:
 
-- `just doctor` — verify `uv`, `just`, `python3`, and the Copilot extension are present
+- `just doctor` — verify `uv`, `just`, `python3`, and the VS Code CLI are present
 - `just setup` — `uv sync --frozen --group dev` (lockfile-pinned)
 - `just bootstrap` — create and seed the SQLite database
 - `just run` — start the FastAPI server
